@@ -6,7 +6,7 @@ import 'package:walletconnect_flutter_v2/walletconnect_flutter_v2.dart';
 
 final serviceLocator = GetIt.instance;
 
-void setupServiceLocator() async {
+Future<void> setupServiceLocator() async {
   serviceLocator.registerSingleton<IScannerService>(ScannerService());
   serviceLocator.registerSingleton<WCPairingInfo>(WCPairingInfo());
   final wcClient = await getWcClient();

@@ -39,34 +39,41 @@ class _WalletConnectQRScreenState extends State<WalletConnectQRScreen>
         children: <Widget>[
           Expanded(
             flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: QRView(
-                key: qrKey,
-                onQRViewCreated: _onQRViewCreated,
-                overlay: QrScannerOverlayShape(
-                  borderColor: Theme.of(context).colorScheme.inversePrimary,
-                  borderRadius: 10,
-                  borderLength: 30,
-                  borderWidth: 10,
-                  cutOutSize: MediaQuery.of(context).size.width / 1.6,
-                ),
-                onPermissionSet: (qrViewController, isPermissionGiven) =>
-                    _onPermissionSet(
-                  context,
-                  qrViewController,
-                  isPermissionGiven,
-                ),
+            child: QRView(
+              key: qrKey,
+              onQRViewCreated: _onQRViewCreated,
+              overlay: QrScannerOverlayShape(
+                borderColor: Theme.of(context).colorScheme.inversePrimary,
+                borderRadius: 10,
+                borderLength: 30,
+                borderWidth: 10,
+                cutOutSize: MediaQuery.of(context).size.width / 1.6,
+              ),
+              onPermissionSet: (qrViewController, isPermissionGiven) =>
+                  _onPermissionSet(
+                context,
+                qrViewController,
+                isPermissionGiven,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text(
-                    "place your QR code withiun the given area to pair with the dapp")
-              ],
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24),
+                child: Column(
+                  children: [
+                    Text(
+                      "Place your QR code within the given area to pair with the dapp",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 16,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           )
         ],

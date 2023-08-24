@@ -17,6 +17,7 @@ class WCApp extends StatelessWidget {
     return MaterialApp(
       title: AppData.appTitle,
       theme: AppData.appTheme,
+      debugShowCheckedModeBanner: false,
       home: const HomeScreen(title: AppData.homeScreenTitle),
     );
   }

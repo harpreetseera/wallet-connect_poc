@@ -4,6 +4,7 @@ import 'package:wallet_connect_poc/screens/home_page.dart';
 import 'package:wallet_connect_poc/service_locator.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   runApp(const WCApp());
 }

@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> with Utility {
       pairingInfo.uri = res!.code;
       pairingInfo.pairConnection();
     } else {
-      if (context.mounted) {
+      if (res != null && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Invalid QR code to pair a connection'),
         ));

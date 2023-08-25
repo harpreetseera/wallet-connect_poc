@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:wallet_connect_poc/app_data.dart';
 import 'package:wallet_connect_poc/model/wc_data.dart';
 import 'package:walletconnect_flutter_v2/walletconnect_flutter_v2.dart';
 
@@ -12,13 +13,13 @@ Future<void> setupServiceLocator() async {
 
 getWcClient() async {
   Web3Wallet wcClient = await Web3Wallet.createInstance(
-    relayUrl: 'wss://relay.walletconnect.com',
-    projectId: '',
+    relayUrl: AppData.wcRelayUrl,
+    projectId: AppData.projectId,
     metadata: const PairingMetadata(
-      name: 'WC Pairing',
-      description: 'A wallet that can be requested to sign transactions',
-      url: 'https://walletconnect.com',
-      icons: ['https://avatars.githubusercontent.com/u/37784886'],
+      name: AppData.wcPairingName,
+      description: AppData.wcPairingDesc,
+      url: AppData.wcAppUrl,
+      icons: [AppData.wcAppIconUrl],
     ),
   );
   return wcClient;

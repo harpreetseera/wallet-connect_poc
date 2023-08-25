@@ -22,6 +22,9 @@ abstract class WCDataBase with Store {
   @observable
   PairingInfo? pairingInfo;
 
+  @computed
+  bool get isPairingDetailAvailable => pairingInfo != null;
+
   @action
   Future<void> pairConnection() async {
     final actualUri = Uri.parse(uri!);

@@ -20,44 +20,60 @@ class _HomeScreenState extends State<HomeScreen> with Utility {
 
   @override
   Widget build(BuildContext context) {
+    final appBarBgColor = Theme.of(context).colorScheme.inversePrimary;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: appBarBgColor,
         title: const Text(AppData.homeScreenTitle),
       ),
       body: Center(
         child: Observer(
-          builder: (context) => wcData.isLoading
-              ? const CircularProgressIndicator()
-              : wcData.pairingInfo != null
-                  ? const PairingDetailsCard()
-                  : const Offstage(),
+          builder: (context) {
+            if (wcData.isLoading) {
+              return const CircularProgressIndicator();
+            } else {
+              if (wcData.isPairingDetailAvailable) {
+                return const PairingDetailsCard();
+              } else {
+                return const Offstage();
+              }
+            }
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: scanQrCode,
+        onPressed: processQrCodeScanning,
         tooltip: AppData.scanToolTip,
         child: const Icon(Icons.qr_code_scanner),
       ),
     );
   }
 
-  void scanQrCode() async {
+  void processQrCodeScanning() async {
     wcData.clear();
-    final Barcode? res = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const WalletConnectQRScreen(),
-      ),
-    );
+    final Barcode? res = await scanQr();
     if (isValidWCUri(res?.code)) {
       wcData.uri = res!.code;
       wcData.pairConnection();
     } else {
       if (res != null && context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Invalid QR code to pair a connection'),
-        ));
+        showErrorMsg();
       }
     }
+  }
+
+  void showErrorMsg() {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(AppData.invalidQRMsg),
+    ));
+  }
+
+  Future<Barcode?> scanQr() async {
+    final qrscanResult = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const WalletConnectQRScreen(),
+      ),
+    );
+    return qrscanResult;
   }
 }

@@ -4,5 +4,4 @@ mixin Utility {
     final doesUriContainWCKeyword = uri.contains("wc:");
     return doesUriContainWCKeyword;
   }
-  
 }

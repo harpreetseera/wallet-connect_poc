@@ -9,6 +9,14 @@ part of 'wc_data.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$WCData on WCDataBase, Store {
+  Computed<bool>? _$isPairingDetailAvailableComputed;
+
+  @override
+  bool get isPairingDetailAvailable => (_$isPairingDetailAvailableComputed ??=
+          Computed<bool>(() => super.isPairingDetailAvailable,
+              name: 'WCDataBase.isPairingDetailAvailable'))
+      .value;
+
   late final _$uriAtom = Atom(name: 'WCDataBase.uri', context: context);
 
   @override
@@ -77,7 +85,8 @@ mixin _$WCData on WCDataBase, Store {
     return '''
 uri: ${uri},
 isLoading: ${isLoading},
-pairingInfo: ${pairingInfo}
+pairingInfo: ${pairingInfo},
+isPairingDetailAvailable: ${isPairingDetailAvailable}
     ''';
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_connect_poc/model/wc_data.dart';
-import 'package:wallet_connect_poc/service_locator.dart';
+import 'package:wallet_connect_poc/app_data.dart';
+import 'package:wallet_connect_poc/size_config.dart';
 import 'package:wallet_connect_poc/widgets/pairing_properties.dart';
 
 class PairingDetailsCard extends StatelessWidget {
@@ -8,47 +8,37 @@ class PairingDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wcData = serviceLocator.get<WCData>();
+    final dividerColor =
+        Theme.of(context).colorScheme.tertiary.withOpacity(0.1);
+    final pairingDetailTitleStyle = Theme.of(context)
+        .textTheme
+        .titleLarge!
+        .copyWith(color: Theme.of(context).colorScheme.tertiary);
+
     return Column(
       children: <Widget>[
         Card(
-          margin: const EdgeInsets.all(16),
+          margin: const EdgeInsets.all(SizeConfig.genricPaddingSize),
           color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                padding: const EdgeInsets.fromLTRB(
+                  SizeConfig.genricPaddingSize,
+                  SizeConfig.genricPaddingSize,
+                  SizeConfig.genricPaddingSize,
+                  0,
+                ),
                 child: Text(
-                  "Pairing Details",
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Theme.of(context).colorScheme.tertiary),
+                  AppData.pairingDetailsText,
+                  style: pairingDetailTitleStyle,
                 ),
               ),
               Divider(
-                color: Theme.of(context).colorScheme.tertiary.withOpacity(0.1),
+                color: dividerColor,
               ),
-              PairingProperties(
-                property: "Uri",
-                value: wcData.uri,
-              ),
-              PairingProperties(
-                property: "Topic",
-                value: wcData.pairingInfo!.topic,
-              ),
-              PairingProperties(
-                property: "Expiry",
-                value: wcData.pairingInfo!.expiry.toString(),
-              ),
-              PairingProperties(
-                property: "Relay Protocol",
-                value: wcData.pairingInfo!.relay.protocol,
-              ),
-              PairingProperties(
-                property: "Relay Data",
-                value: wcData.pairingInfo!.relay.data,
-              ),
+              const PairingProperties()
             ],
           ),
         ),

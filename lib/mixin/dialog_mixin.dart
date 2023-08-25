@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_connect_poc/size_config.dart';
 
 mixin DialogMixin<T extends StatefulWidget> on State<T> {
   void showLoader(BuildContext context) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) => Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: CircularProgressIndicator(),
+            borderRadius: BorderRadius.circular(SizeConfig.mediumBorderRadius)),
+        child: const CircularProgressIndicator(),
       ),
-      barrierDismissible: false,
     );
   }
 

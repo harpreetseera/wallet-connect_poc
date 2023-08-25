@@ -5,12 +5,14 @@ import 'package:walletconnect_flutter_v2/walletconnect_flutter_v2.dart';
 
 final serviceLocator = GetIt.instance;
 
+/// sets up the dependency injection for the app
 Future<void> setupServiceLocator() async {
   serviceLocator.registerSingleton<WCData>(WCData());
   final wcClient = await getWcClient();
   serviceLocator.registerSingleton<Web3Wallet>(wcClient);
 }
 
+/// Gets the walletconnect client by creating an instance
 getWcClient() async {
   Web3Wallet wcClient = await Web3Wallet.createInstance(
     relayUrl: AppData.wcRelayUrl,

@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 import 'package:wallet_connect_poc/utility.dart';
-import 'package:flutter/material.dart';
 
 class Testing with Utility {}
 

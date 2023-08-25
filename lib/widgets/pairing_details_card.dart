@@ -3,6 +3,7 @@ import 'package:wallet_connect_poc/app_data.dart';
 import 'package:wallet_connect_poc/size_config.dart';
 import 'package:wallet_connect_poc/widgets/pairing_properties.dart';
 
+///Card to display the pairing details
 class PairingDetailsCard extends StatelessWidget {
   const PairingDetailsCard({super.key});
 
@@ -18,16 +19,16 @@ class PairingDetailsCard extends StatelessWidget {
     return Column(
       children: <Widget>[
         Card(
-          margin: const EdgeInsets.all(SizeConfig.genricPaddingSize),
+          margin: const EdgeInsets.all(SizeConfig.genericPaddingSize),
           color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(
-                  SizeConfig.genricPaddingSize,
-                  SizeConfig.genricPaddingSize,
-                  SizeConfig.genricPaddingSize,
+                  SizeConfig.genericPaddingSize,
+                  SizeConfig.genericPaddingSize,
+                  SizeConfig.genericPaddingSize,
                   0,
                 ),
                 child: Text(

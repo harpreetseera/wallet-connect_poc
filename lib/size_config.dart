@@ -1,5 +1,6 @@
+/// Size configurations are listed here for the application
 class SizeConfig {
-  static const double genricPaddingSize = 16.0;
+  static const double genericPaddingSize = 16.0;
 
   static const double mediumBorderRadius = 12.0;
 

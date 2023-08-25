@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_connect_poc/app_data.dart';
 
+/// Permission dialog to ask user for camera permission.
 void showPermissionDialog(BuildContext context) {
   showDialog(
     context: context,
@@ -22,9 +23,7 @@ void showPermissionDialog(BuildContext context) {
             Navigator.of(context).pop();
             AppSettings.openAppSettings();
           },
-          child: const Text(AppData.settingsText
-              // style: textStyle,
-              ),
+          child: const Text(AppData.settingsText),
         ),
       ],
       title: const Text(AppData.cameraAccessText),

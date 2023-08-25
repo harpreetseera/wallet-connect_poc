@@ -4,6 +4,7 @@ import 'package:wallet_connect_poc/model/wc_data.dart';
 import 'package:wallet_connect_poc/service_locator.dart';
 import 'package:wallet_connect_poc/size_config.dart';
 
+/// necessary properties of the cnnection pairing are dispayed through this widget 
 class PairingProperties extends StatelessWidget {
   const PairingProperties({
     super.key,
@@ -27,7 +28,7 @@ class PairingProperties extends StatelessWidget {
           .map(
             (entry) => Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: SizeConfig.genricPaddingSize,
+                horizontal: SizeConfig.genericPaddingSize,
                 vertical: SizeConfig.smallPaddingSize,
               ),
               child: SelectableText.rich(

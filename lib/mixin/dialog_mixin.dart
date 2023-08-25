@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_connect_poc/size_config.dart';
 
+///Mixin helper to show dialogs such as loaders 
 mixin DialogMixin<T extends StatefulWidget> on State<T> {
   void showLoader(BuildContext context) {
     showDialog(

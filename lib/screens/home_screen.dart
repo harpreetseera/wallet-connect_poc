@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with Utility {
+  /// Fetches the required data through dependency injection
   final wcData = serviceLocator.get<WCData>();
 
   @override
@@ -62,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> with Utility {
     }
   }
 
+  /// Loads a snackbar with the error msg
   void showErrorMsg() {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(AppData.invalidQRMsg),

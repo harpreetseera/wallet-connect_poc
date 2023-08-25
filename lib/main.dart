@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_connect_poc/app_data.dart';
-import 'package:wallet_connect_poc/screens/home_page.dart';
+import 'package:wallet_connect_poc/screens/home_screen.dart';
 import 'package:wallet_connect_poc/service_locator.dart';
 
 void main() {

@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:app_settings/app_settings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:wallet_connect_poc/app_data.dart';
 import 'package:wallet_connect_poc/mixin/dialog_mixin.dart';
+import 'package:wallet_connect_poc/widgets/dialog/dialog.dart';
 
 class WalletConnectQRScreen extends StatefulWidget {
   const WalletConnectQRScreen({super.key});
@@ -33,7 +33,7 @@ class _WalletConnectQRScreenState extends State<WalletConnectQRScreen>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Scan QR to Pair'),
+        title: const Text(AppData.scanHeadingText),
       ),
       body: Column(
         children: <Widget>[
@@ -65,7 +65,7 @@ class _WalletConnectQRScreenState extends State<WalletConnectQRScreen>
                 child: Column(
                   children: [
                     Text(
-                      "Place your QR code within the given area to pair with the dapp",
+                      AppData.qrScanDescription,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.primary,
                         fontSize: 16,
@@ -111,37 +111,4 @@ class _WalletConnectQRScreenState extends State<WalletConnectQRScreen>
     controller.dispose();
     super.dispose();
   }
-}
-
-void showPermissionDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (context) => CupertinoAlertDialog(
-      actions: [
-        CupertinoDialogAction(
-          isDefaultAction: false,
-          onPressed: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
-          },
-          child: const Text("Cancel"),
-        ),
-        CupertinoDialogAction(
-          isDefaultAction: true,
-          onPressed: () async {
-            Navigator.of(context).pop();
-            AppSettings.openAppSettings();
-          },
-          child: const Text("Settings"
-              // style: textStyle,
-              ),
-        ),
-      ],
-      title: const Text("Camera Access"),
-      content: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0),
-        child: Text("Camera Access description"),
-      ),
-    ),
-  );
 }

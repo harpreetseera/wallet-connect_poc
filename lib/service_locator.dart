@@ -1,14 +1,11 @@
 import 'package:get_it/get_it.dart';
-import 'package:wallet_connect_poc/model/wc_pairing_info.dart';
-import 'package:wallet_connect_poc/services/i_scanner_service.dart';
-import 'package:wallet_connect_poc/services/scanner_service.dart';
+import 'package:wallet_connect_poc/model/wc_data.dart';
 import 'package:walletconnect_flutter_v2/walletconnect_flutter_v2.dart';
 
 final serviceLocator = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
-  serviceLocator.registerSingleton<IScannerService>(ScannerService());
-  serviceLocator.registerSingleton<WCPairingInfo>(WCPairingInfo());
+  serviceLocator.registerSingleton<WCData>(WCData());
   final wcClient = await getWcClient();
   serviceLocator.registerSingleton<Web3Wallet>(wcClient);
 }

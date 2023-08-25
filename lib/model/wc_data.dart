@@ -2,12 +2,12 @@ import 'package:mobx/mobx.dart';
 import 'package:wallet_connect_poc/service_locator.dart';
 import 'package:walletconnect_flutter_v2/apis/core/pairing/utils/pairing_models.dart';
 import 'package:walletconnect_flutter_v2/apis/web3wallet/web3wallet.dart';
-part 'wc_pairing_info.g.dart';
+part 'wc_data.g.dart';
 
-class WCPairingInfo = WCPairingInfoBase with _$WCPairingInfo;
+class WCData = WCDataBase with _$WCData;
 
-abstract class WCPairingInfoBase with Store {
-  WCPairingInfoBase({
+abstract class WCDataBase with Store {
+  WCDataBase({
     this.uri,
     this.isLoading = false,
     this.pairingInfo,

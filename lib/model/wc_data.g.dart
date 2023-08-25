@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'wc_pairing_info.dart';
+part of 'wc_data.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'wc_pairing_info.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$WCPairingInfo on WCPairingInfoBase, Store {
-  late final _$uriAtom = Atom(name: 'WCPairingInfoBase.uri', context: context);
+mixin _$WCData on WCDataBase, Store {
+  late final _$uriAtom = Atom(name: 'WCDataBase.uri', context: context);
 
   @override
   String? get uri {
@@ -25,7 +25,7 @@ mixin _$WCPairingInfo on WCPairingInfoBase, Store {
   }
 
   late final _$isLoadingAtom =
-      Atom(name: 'WCPairingInfoBase.isLoading', context: context);
+      Atom(name: 'WCDataBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -41,7 +41,7 @@ mixin _$WCPairingInfo on WCPairingInfoBase, Store {
   }
 
   late final _$pairingInfoAtom =
-      Atom(name: 'WCPairingInfoBase.pairingInfo', context: context);
+      Atom(name: 'WCDataBase.pairingInfo', context: context);
 
   @override
   PairingInfo? get pairingInfo {
@@ -57,11 +57,19 @@ mixin _$WCPairingInfo on WCPairingInfoBase, Store {
   }
 
   late final _$pairConnectionAsyncAction =
-      AsyncAction('WCPairingInfoBase.pairConnection', context: context);
+      AsyncAction('WCDataBase.pairConnection', context: context);
 
   @override
-  Future pairConnection() {
+  Future<void> pairConnection() {
     return _$pairConnectionAsyncAction.run(() => super.pairConnection());
+  }
+
+  late final _$clearAsyncAction =
+      AsyncAction('WCDataBase.clear', context: context);
+
+  @override
+  Future<void> clear() {
+    return _$clearAsyncAction.run(() => super.clear());
   }
 
   @override
